@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KeyCup 2026 | Día del Padre</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      font-family:Arial, Helvetica, sans-serif;
+      color:white;
+      background:
+        radial-gradient(circle at top, rgba(255,221,0,.32), transparent 25%),
+        linear-gradient(135deg,#001B5E 0%,#003B95 45%,#FFD600 100%);
+      overflow-x:hidden;
+    }
+    .stadium-lights{
+      position:fixed;inset:0;pointer-events:none;
+      background:repeating-radial-gradient(circle at 50% 0%,rgba(255,255,255,.18) 0 2px,transparent 3px 90px);
+      opacity:.35;
+    }
+    .wrap{max-width:940px;margin:auto;padding:28px 18px 55px;position:relative;z-index:2}
+    .hero{
+      background:rgba(0,24,80,.72);
+      border:2px solid rgba(255,214,0,.55);
+      border-radius:30px;
+      padding:28px;
+      text-align:center;
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
+      backdrop-filter:blur(10px);
+    }
+    .badge{
+      display:inline-block;padding:9px 16px;border-radius:999px;
+      background:#FFD600;color:#003B95;font-weight:bold;margin-bottom:14px;
+    }
+    h1{font-size:clamp(32px,7vw,62px);line-height:1.02;margin-bottom:10px;color:#FFD600;text-shadow:0 4px 0 rgba(0,0,0,.15)}
+    .subtitle{font-size:18px;max-width:650px;margin:0 auto 24px;line-height:1.45}
+    .keychain{
+      width:min(280px,72vw);height:280px;margin:18px auto 20px;
+      display:grid;place-items:center;position:relative;animation:float 3s ease-in-out infinite;
+    }
+    .ring{width:70px;height:70px;border:10px solid #d9d9d9;border-radius:50%;position:absolute;top:0;box-shadow:inset 0 2px 6px rgba(0,0,0,.35)}
+    .cup{
+      position:absolute;top:54px;width:150px;height:190px;border-radius:55px 55px 35px 35px;
+      background:linear-gradient(135deg,#FFE680,#F6B900 45%,#fff1a6 55%,#D89400);
+      box-shadow:0 12px 25px rgba(0,0,0,.35), inset 0 0 18px rgba(255,255,255,.55);
+    }
+    .cup:before,.cup:after{content:"";position:absolute;width:65px;height:78px;border:12px solid #F6C400;top:32px;border-radius:50%;z-index:-1}
+    .cup:before{left:-52px}.cup:after{right:-52px}
+    .base{position:absolute;bottom:0;width:135px;height:44px;border-radius:14px;background:linear-gradient(135deg,#003B95,#001B5E);border:3px solid #FFD600;display:grid;place-items:center;font-weight:bold}
+    .qr{font-size:14px;background:white;color:#001B5E;padding:5px 9px;border-radius:5px;letter-spacing:2px}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    button,a.button{
+      border:none;text-decoration:none;cursor:pointer;border-radius:999px;padding:15px 22px;font-size:16px;font-weight:bold;
+      background:#FFD600;color:#003B95;box-shadow:0 8px 18px rgba(0,0,0,.25);transition:.25s;
+    }
+    button:hover,a.button:hover{transform:translateY(-2px);filter:brightness(1.05)}
+    .letter{
+      margin-top:24px;background:rgba(255,255,255,.94);color:#14305f;border-radius:24px;padding:26px;text-align:left;display:none;
+      box-shadow:0 15px 35px rgba(0,0,0,.25);
+    }
+    .letter h2{color:#003B95;text-align:center;margin-bottom:15px}
+    .letter p{font-size:18px;line-height:1.65;margin-bottom:12px}
+    .signature{text-align:right;font-weight:bold;color:#003B95;margin-top:15px}
+    .music{margin-top:18px;text-align:center}
+    .note{font-size:13px;opacity:.75;margin-top:10px}
+    .floating{position:fixed;bottom:-40px;font-size:28px;animation:rise 7s linear infinite;opacity:.75;z-index:1}
+    @keyframes rise{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+  </style>
+</head>
+<body>
+  <div class="stadium-lights"></div>
+  <main class="wrap">
+    <section class="hero">
+      <span class="badge">🏆 KeyCup 2026 · Edición especial</span>
+      <h1>¡Feliz Día del Padre!</h1>
+      <p class="subtitle">Este llavero no solo guarda unas llaves: guarda una dedicatoria especial creada con mucho cariño para ti.</p>
+      <div class="keychain" aria-label="Llavero en forma de copa mundialista con código QR">
+        <div class="ring"></div><div class="cup"></div><div class="base"><span class="qr">QR</span></div>
+      </div>
+      <div class="btns">
+        <button onclick="openGift()">🎁 Abrir mi sorpresa</button>
+        <button onclick="playMusic()">🎵 Reproducir canción</button>
+      </div>
+      <div class="letter" id="letter">
+        <h2>Para el mejor papá 💛💙</h2>
+        <p id="typed"></p>
+        <p class="signature">Con mucho cariño,<br>Tu familia ❤️</p>
+        <div class="music">
+          <audio id="song" controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+          </audio>
+          <p class="note">Puedes cambiar esta canción por un enlace o archivo de audio propio.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const text = "Gracias por tu esfuerzo, tu paciencia y por estar presente en cada momento importante. Este detalle fue creado para recordarte lo valioso que eres para nosotros. Eres ejemplo, apoyo y alegría. Que este Día del Padre esté lleno de amor, orgullo y muchos recuerdos bonitos.";
+    let i = 0;
+    function openGift(){
+      document.getElementById('letter').style.display='block';
+      if(i===0) typeWriter();
+      confetti();
+    }
+    function typeWriter(){
+      if(i < text.length){
+        document.getElementById('typed').innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 28);
+      }
+    }
+    function playMusic(){
+      const song = document.getElementById('song');
+      document.getElementById('letter').style.display='block';
+      song.play();
+      if(i===0) typeWriter();
+    }
+    function confetti(){
+      const icons=['🏆','⚽','💛','💙','✨'];
+      for(let c=0;c<22;c++){
+        const el=document.createElement('div');
+        el.className='floating';
+        el.textContent=icons[Math.floor(Math.random()*icons.length)];
+        el.style.left=Math.random()*100+'vw';
+        el.style.animationDuration=(4+Math.random()*4)+'s';
+        document.body.appendChild(el);
+        setTimeout(()=>el.remove(),8000);
+      }
+    }
+  </script>
+</body>
+</html>
